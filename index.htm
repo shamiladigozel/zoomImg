@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main{
+            position: relative;
+            width: 250px;
+            height: 250px;
+            transform: translateY(100px);
+            margin: auto;
+        }
+        #mainImg{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+        }
+        #zoomBox{
+            width: 100px;
+            height: 100px;
+            position: relative;
+            border: 1px solid red;
+            overflow: hidden;
+        
+            border-radius: 50% 50%;
+            
+        }
+        #zoomObject{
+            position: absolute;
+            width: 600px;
+            height: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+       <img id="mainImg" src="img.jpg"/>
+       <div id="zoomBox">
+           <img id="zoomObject" src="img.jpg"/>
+       </div>
+    </div>
+
+
+    <script>
+         let img=document.getElementsByTagName('img')[0];
+         let zoomObjImg=document.getElementsByTagName('img')[1];
+         let zoomBox=document.getElementById('zoomBox');
+
+         img.addEventListener('mousemove',function(e){
+            
+            let x1=(-e.offsetX*2);
+            let y1=(-e.offsetY*2);
+            zoomObjImg.style.left=x1+'px';
+            zoomObjImg.style.top=y1+'px';
+            zoomBox.style.transform=`translate(${-x1/2}px,${-y1/2}px)`;
+            
+
+         });
+        
+
+
+    </script>
+</body>
+</html>
